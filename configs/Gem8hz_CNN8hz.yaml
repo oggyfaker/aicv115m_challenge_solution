@@ -1,0 +1,53 @@
+# Dataset config 
+max_epochs: 18
+lr: 0.001
+min_lr: 0.00001
+seed: [25,20,20,25,2308]
+
+
+# Training config 
+accelerator: "ddp"            #mode data distribution (Default: False)
+move_metrics_to_cpu: False    #Calc metrics on cpu (Default: False)
+gpus: [0,1]                   #GPU id list (Default: [0,1]- Good for training)
+find_unused_parameters: False # Find freeze paramter (Default: False)
+precision: 32                 #32 bit precision
+accumulate_grad_batches: 20    # After forward batch size, go backward (Default: 4)
+check_val_every_n_epoch: 1    #Check each epoch (Default: 1)
+
+
+
+## Audio-Training Config
+pretrained_Effv2: './weights/1.OnlyModelBase/GemP_8hz'
+pretrained_CNN14_8hz: "./weights/PANNnets/Cnn14_8k_mAP=0.416.pth" # PANN pretrained
+
+PERIOD_Effv2: 35 # Time audio Base GemP
+SR_Effv2: 8000
+Effv2_Config: {"pretrained": False, 
+              "channels": 1,
+              "sample_rate": 8000, 
+              "window_size": 1024, 
+              "hop_size": 320, 
+              "mel_bins": 128, 
+              "fmin": 50, 
+              "fmax": 4000,
+              "num_classes": 1}
+
+PERIOD_PANN: 35 # Time audio in CNN8hz
+SR_PANN: 8000
+PANN_Config: {"sample_rate": 8000, 
+              "window_size": 256, 
+              "hop_size": 80, 
+              "mel_bins": 64, 
+              "fmin": 50, 
+              "fmax": 4000, 
+              "classes_num": 527}
+
+
+## Audio Submit Config
+OldWeight_8hz_8hz: "./weights/OldPretrained/Hybrid_8hz_8hz" 
+OldAlpha: 0.4
+NewAlpha: 0.4
+Submit_8hz_config: {'SR_Effv2': 8000,
+                    'PERIOD_Effv2': 35,
+                    'SR_PANN': 8000,
+                    'PERIOD_PANN': 35}

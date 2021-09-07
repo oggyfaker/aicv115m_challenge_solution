@@ -1,0 +1,29 @@
+# Dataset config 
+max_epochs: 30
+lr: 0.001
+min_lr: 0.00001
+seed: [25,20,20,25,2308]
+
+
+# Training config 
+accelerator: "ddp"            #mode data distribution (Default: False)
+move_metrics_to_cpu: False    #Calc metrics on cpu (Default: False)
+gpus: [0,1]                   #GPU id list (Default: [0,1]- Good for training)
+find_unused_parameters: False # Find freeze paramter (Default: False)
+precision: 32                 #32 bit precision
+accumulate_grad_batches: 4    # After forward batch size, go backward (Default: 4)
+check_val_every_n_epoch: 1    #Check each epoch (Default: 1)
+
+
+# Audio config
+PERIOD: 35 # time of audio 
+SR: 4000
+audio_config: {"pretrained" :True, 
+              "channels": 1,
+              "sample_rate": 4000, 
+              "window_size": 1024, 
+              "hop_size": 320, 
+              "mel_bins": 256, 
+              "fmin": 50, 
+              "fmax": 2000,
+              "num_classes": 1}

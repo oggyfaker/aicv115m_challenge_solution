@@ -1,0 +1,13 @@
+# Set up path with root link same root of main.py !
+TRAIN_CSV: "./data/aicv115m_final_public_train/public_train_metadata.csv"
+TRAIN_AUDIO: "./data/aicv115m_final_public_train/public_train_audio_files"
+
+TEST_CSV: "./data/aicv115m_final_public_test/public_test_sample_submission.csv"
+TEST_AUDIO: "./data/aicv115m_final_public_test/public_test_audio_files"
+
+PRIVATE_TEST: "./data/aicv115m_final_private_test/private_test_sample_submission.csv"
+PRIVATE_AUDIO: "./data/aicv115m_final_private_test/private_test_audio_files"
+
+OLD_SUBMISION: "./data/old_submission"
+NEW_SUBMISION: "./data/new_submission"
+

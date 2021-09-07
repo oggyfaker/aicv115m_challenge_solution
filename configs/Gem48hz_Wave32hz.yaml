@@ -1,0 +1,55 @@
+# Dataset config 
+max_epochs: 18
+lr: 0.001
+min_lr: 0.00001
+seed: [25,20,20,25,2308]
+
+
+# Training config 
+accelerator: "ddp"            #mode data distribution (Default: False)
+move_metrics_to_cpu: False    #Calc metrics on cpu (Default: False)
+gpus: [0,1]                   #GPU id list (Default: [0,1]- Good for training)
+find_unused_parameters: False # Find freeze paramter (Default: False)
+precision: 32                 #32 bit precision
+accumulate_grad_batches: 20    # After forward batch size, go backward (Default: 4)
+check_val_every_n_epoch: 1    #Check each epoch (Default: 1)
+
+
+# Audio Config
+pretrained_Effv2: './weights/1.OnlyModelBase/GemP_48hz'
+pretrained_WaveLogMel32hz: "./weights/PANNnets/Wavegram_Logmel_Cnn14_mAP=0.439.pth"
+
+PERIOD_Effv2: 15
+SR_Effv2: 48000
+Effv2_Config: {"pretrained": False, 
+              "channels": 1,
+              "sample_rate": 48000, 
+              "window_size": 1024, 
+              "hop_size": 320, 
+              "mel_bins": 128, 
+              "fmin": 50, 
+              "fmax": 24000,
+              "num_classes": 1}
+
+PERIOD_PANN: 35
+SR_PANN: 32000
+PANN_Config: {"sample_rate": 32000, 
+              "window_size": 1024, 
+              "hop_size": 320, 
+              "mel_bins": 64, 
+              "fmin": 50, 
+              "fmax": 14000, 
+              "classes_num": 527}
+
+
+## Audio Submit Config 
+OldWeight_48hz_32hz: "./weights/OldPretrained/Hybrid_48hz_32hz"
+OldAlpha: 0.05 # Default for Old pretrained
+NewAlpha: 0.05 # Can change 
+Submit_48hz_config: {'SR_Effv2': 48000,
+                    'SR_PANN': 32000,
+                    'PERIOD_fold0_2': 35,
+                    'PERIOD_fold1': 15,
+                    'PERIOD_fold3': 20,
+                    'PERIOD_fold4': 25,
+                    'PERIOD_PANN': 35,}
