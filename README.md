@@ -1,4 +1,4 @@
-# Top1 AI Covid Cough VietNam 2021 Challenge - by Fruit AI
+# Top 1 AI Covid Cough VietNam 2021 Challenge - Fruit AI
 <p align="center">
  <img src="./icons/Icons.png" align="middle" width = "600" height = "200" />
 <p align="center">
