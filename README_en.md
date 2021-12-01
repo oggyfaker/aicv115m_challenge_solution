@@ -3,7 +3,7 @@
  <img src="./icons/Icons.png" align="middle" width = "600" height = "200" />
 <p align="center">
 
- Vietnamese | [English](README_en.md)
+[Vietnamese](README_vn.md) | English
 
  ## 1. Setup Envs - Requirements
 ```
